@@ -1,0 +1,8 @@
+{
+    "autoload": {
+        "psr-0": {"DiDemo": "src/"}
+    },
+    "require": {
+        "pimple/pimple": "1.0.*"
+    }
+}

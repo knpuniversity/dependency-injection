@@ -1,0 +1,84 @@
+Goals
+-----
+
+* Teach people what DI is
+* Show people the advantages of DI
+* Teach a DIC
+* Show advantages of DIC
+* Explain and pimp SOA
+
+Steps
+-----
+
+* Wrote all this initial setup stuff, with SmtpMailer and inline code
+* Added Composer for its autoloader
+* Create NewsletterManager::send() with all logic in there
+* Instantiate it, it breaks
+* How do we get access to the DBH? Inject it. Tease global and static
+* Add constructor & use it
+* Inject an array of SMTP parameters
+* Create mailer externally, and inject it (no type-hint)
+* type-hint the mailer
+    - advantage: clarity/documentation
+    - auto-complete
+* added a MailerInterface
+    -> talk about advantages of this
+    -> Are we following a PSR we can mention here (*Interface?)
+* add Pimple to Composer
+* Instantiate Pimple (not in a namespace)
+* Add the "mailer" service only, use it for NewsletterManager
+* Put NewsLetterManager into the container
+    - show how Container is passed to callback
+    - put dbh into container
+    - order of services does not matter
+    - delineate the container setup steps from the actual application code
+* Move configuration into the container
+    - DSN
+    - smtp.*
+* Create app/config.php and app/services.php
+    - move use statements into services.php
+    - update database path
+* Add inline PHPDoc to services.php for $container and app.php for NewsletterManager
+
+Example
+-------
+
+- file that queries for users, then sends them an email
+    - db connection created inline
+    - mailer created inline
+- create a class that handles newsletter mailing
+    - mailing logic done inline
+    - handles logic of who we're sending from, content of email
+    ?? where is the content of the email coming from?
+    - array of emails passed into method
+- refactor to inject parameters
+- refactor to inject whole mailer object
+    - what mailer "object" do we use to inject here? Create one beforehand? Swift?
+    - make it something with a very specific name - like SmtpMailer
+- add an interface for the mailer
+- introduce the container
+- also put the db into the container
+    -> we can now easily change to MySQL
+- refactor into different config/services files
+- show type-hinting out of the container
+
+Issues
+------
+
+* Where can we use an interface?
+* Need to look at Fabien's old article on this
+* What is a service locator?
+* How does this relate to IoC?
+* I'm using namespaces, but no autoloader
+
+Comments
+--------
+
+* Without injection, the internal service isn't really a "plugin"
+* IoC == Dependency Injection, it's the new term to clear things up
+* DI is to have a separate object - an assembler - populate a property in
+    the main object with the appropriate implementation of a dependency
+* 3 types of injection:
+    a) constructor
+    b) setter
+    c) interface
