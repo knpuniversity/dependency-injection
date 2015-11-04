@@ -15,22 +15,17 @@ illustration: di.png
 
 chapters:
     intro:
-        title:      Introduction
         is_free:    true
         video_key:  140212051
     services:
-        title:      Services and Dependency Injection
         is_free:    true
         video_key:  140212054
     injection-interfaces:
-        title:      Injecting Config & Services and using Interfaces
         is_free:    true
         video_key:  140212052
     container:
-        title:      Dependency Injection Container
         is_free:    true
         video_key:  140212064
     container-in-your-project:
-        title:      A Container in your Project
         is_free:    true
         video_key:  140212053
