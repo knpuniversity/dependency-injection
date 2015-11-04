@@ -6,6 +6,8 @@ tutorial. To get things running:
 
     chmod 777 -R data
     php data/setupDb.php
+    mkdir logs
+    chmod 777 logs
 
 You can also run Composer, though the `vendor/` directory should already
 have everything it needs:
