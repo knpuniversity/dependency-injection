@@ -1,0 +1,7 @@
+{
+    "name": "knpuniversity/dependency-injection",
+    "description": "Tutorial for Dependency Injection and the art of services and containers",
+    "require": {
+        "knpuniversity/gladiator": "^0.2.7"
+    }
+}
