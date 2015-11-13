@@ -1,6 +1,4 @@
 title:  Dependency Injection and the art of services and containers
-price:  0
-length: 22:45
 summary: |
     Get your object-oriented skills sharp by exploring the ideas and reasons
     behind dependency injection. This simple principle separates developers
@@ -14,28 +12,20 @@ summary: |
     If you're ready to take your object-oriented code to the next level, AND
     actually be excited about doing it, this tutorial is for you!
 illustration: di.png
-priority: 100
-tags:
-    - { name: php }
 
 chapters:
     intro:
-        title:      Introduction
         is_free:    true
-        length:     1:35
+        video_key:  140212051
     services:
-        title:      Services and Dependency Injection
         is_free:    true
-        length:     4:18
+        video_key:  140212054
     injection-interfaces:
-        title:      Injecting Config & Services and using Interfaces
         is_free:    true
-        length:     5:27
+        video_key:  140212052
     container:
-        title:      Dependency Injection Container
         is_free:    true
-        length:     10:22
+        video_key:  140212064
     container-in-your-project:
-        title:      A Container in your Project
         is_free:    true
-        length:     1:03
+        video_key:  140212053

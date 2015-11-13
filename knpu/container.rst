@@ -280,7 +280,7 @@ For example, after fetching the ``friend_harvester`` service, you can use
 a single-line comment to tell your IDE and other developers exactly what
 type of object we're getting back::
 
-    /** @var $friendHarvester \DiDemo\FriendHarvester */
+    /** @var \DiDemo\FriendHarvester $friendHarvester */
     $friendHarvester = $container['friend_harvester'];
 
 This gives us IDE auto-complete on the ``$friendHarvester`` variable. 
