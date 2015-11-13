@@ -1,0 +1,40 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "friendharvester-create-empty-class",
+            "name": "FriendHarvester: Create empty class",
+            "description": null
+        },
+        {
+            "id": "friendharvester-move-code-inside",
+            "name": "FriendHarvester: Move code inside",
+            "description": null
+        },
+        {
+            "id": "bad-stuff-use-global",
+            "name": "Bad Stuff: Use global",
+            "description": null
+        },
+        {
+            "id": "bad-stuff-static-variable",
+            "name": "Bad Stuff: static variable",
+            "description": null
+        },
+        {
+            "id": "bad-stuff-remove-the-bad-stuff",
+            "name": "Bad Stuff: Remove the bad stuff",
+            "description": null
+        },
+        {
+            "id": "di-injecting-pdo",
+            "name": "DI: Injecting PDO",
+            "description": null
+        }
+    ],
+    "sha": "5540256b5d8e6b126ab26c000ce4779622987136"
+}

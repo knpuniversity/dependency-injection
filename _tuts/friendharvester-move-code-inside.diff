@@ -1,0 +1,65 @@
+diff --git a/app.php b/app.php
+index 4e9980e..80dcf65 100644
+--- a/app.php
++++ b/app.php
+@@ -3,23 +3,10 @@
+ require __DIR__.'/vendor/autoload.php';
+ 
+ use DiDemo\Mailer\SmtpMailer;
++use DiDemo\FriendHarvester;
+ 
+ $dsn = 'sqlite:'.__DIR__.'/data/database.sqlite';
+ $pdo = new PDO($dsn);
+ 
+-$mailer = new SmtpMailer('smtp.SendMoneyToStrangers.com', 'smtpuser', 'smtppass', '465');
+-
+-$sql = 'SELECT * FROM people_to_spam';
+-foreach ($pdo->query($sql) as $row) {
+-    $mailer->sendMessage(
+-        $row['email'],
+-        'Yay! We want to send you money for no reason!',
+-        sprintf(<<<EOF
+-Hi %s! We've decided that we want to send you money for no reason!
+-
+-Please forward us all your personal information so we can make a deposit and don't ask any questions!
+-EOF
+-        , $row['name']),
+-        'YourTrustedFriend@SendMoneyToStrangers.com'
+-    );
+-}
+\ No newline at end of file
++$friendHarvester = new FriendHarvester();
++$friendHarvester->emailFriends();
+diff --git a/src/DiDemo/FriendHarvester.php b/src/DiDemo/FriendHarvester.php
+index 04a4ef1..63bd84f 100644
+--- a/src/DiDemo/FriendHarvester.php
++++ b/src/DiDemo/FriendHarvester.php
+@@ -2,10 +2,27 @@
+ 
+ namespace DiDemo;
+ 
++use DiDemo\Mailer\SmtpMailer;
++
+ class FriendHarvester
+ {
+     public function emailFriends()
+     {
++        $mailer = new SmtpMailer('smtp.SendMoneyToStrangers.com', 'smtpuser', 'smtppass', '465');
++
++        $sql = 'SELECT * FROM people_to_spam';
++        foreach ($pdo->query($sql) as $row) {
++            $mailer->sendMessage(
++                $row['email'],
++                'Yay! We want to send you money for no reason!',
++                sprintf(<<<EOF
++Hi %s! We've decided that we want to send you money for no reason!
+ 
++Please forward us all your personal information so we can make a deposit and don't ask any questions!
++EOF
++                , $row['name']),
++                'YourTrustedFriend@SendMoneyToStrangers.com'
++            );
++        }
+     }
+ }
+\ No newline at end of file

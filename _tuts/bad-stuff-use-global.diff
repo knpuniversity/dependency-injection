@@ -1,0 +1,13 @@
+diff --git a/src/DiDemo/FriendHarvester.php b/src/DiDemo/FriendHarvester.php
+index 63bd84f..bf27c33 100644
+--- a/src/DiDemo/FriendHarvester.php
++++ b/src/DiDemo/FriendHarvester.php
+@@ -8,6 +8,8 @@ class FriendHarvester
+ {
+     public function emailFriends()
+     {
++        // NOOOOOOOO!!!!
++        global $pdo;
+         $mailer = new SmtpMailer('smtp.SendMoneyToStrangers.com', 'smtpuser', 'smtppass', '465');
+ 
+         $sql = 'SELECT * FROM people_to_spam';

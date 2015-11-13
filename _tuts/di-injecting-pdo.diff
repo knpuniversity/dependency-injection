@@ -1,0 +1,36 @@
+diff --git a/app.php b/app.php
+index 80dcf65..0696ae1 100644
+--- a/app.php
++++ b/app.php
+@@ -8,5 +8,5 @@ use DiDemo\FriendHarvester;
+ $dsn = 'sqlite:'.__DIR__.'/data/database.sqlite';
+ $pdo = new PDO($dsn);
+ 
+-$friendHarvester = new FriendHarvester();
++$friendHarvester = new FriendHarvester($pdo);
+ $friendHarvester->emailFriends();
+diff --git a/src/DiDemo/FriendHarvester.php b/src/DiDemo/FriendHarvester.php
+index 63bd84f..65c3708 100644
+--- a/src/DiDemo/FriendHarvester.php
++++ b/src/DiDemo/FriendHarvester.php
+@@ -6,12 +6,19 @@ use DiDemo\Mailer\SmtpMailer;
+ 
+ class FriendHarvester
+ {
++    private $pdo;
++
++    public function __construct($pdo)
++    {
++        $this->pdo = $pdo;
++    }
++
+     public function emailFriends()
+     {
+         $mailer = new SmtpMailer('smtp.SendMoneyToStrangers.com', 'smtpuser', 'smtppass', '465');
+ 
+         $sql = 'SELECT * FROM people_to_spam';
+-        foreach ($pdo->query($sql) as $row) {
++        foreach ($this->pdo->query($sql) as $row) {
+             $mailer->sendMessage(
+                 $row['email'],
+                 'Yay! We want to send you money for no reason!',
