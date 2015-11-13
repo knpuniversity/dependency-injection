@@ -4,7 +4,30 @@ Dependency Injection, Containers and Pimple
 Well hi there! Enclosed is the code that accompanies our tutorial on dependency
 injection, DI contains, services and Pimple. Here's what to look for:
 
-* start:    The code that we start with at the beginning of the tutorial
-* finish:   The finished product at the end of the tutorial
+Starting Code
+=============
 
-Look for a README.md in each directory for more details.
+This directory holds the starting state of the code at the beginning of the
+tutorial. To get things running:
+
+    chmod 777 -R data
+    php data/setupDb.php
+
+You can also run Composer, though the `vendor/` directory should already
+have everything it needs:
+
+    php composer.phar install
+
+Run the App
+-----------
+
+To run the app, just execute the `app.php` file from the command line:
+
+    php app.php
+
+The application shouldn't have any output, but if you tail the log file,
+you should see content added to it:
+
+    tail -f logs/mail.log
+
+Have fun!
