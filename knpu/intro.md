@@ -56,4 +56,4 @@ php app.php
 You'll see two emails are sent to two lucky people.
 
 
-[1]: http://getcomposer.org/doc/01-basic-usage.md#autoloading
+[1]: knpuniversity.com/composer
