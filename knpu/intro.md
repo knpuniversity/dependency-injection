@@ -36,13 +36,7 @@ sending of emails for simplicity. Instead, it just logs details to a file:
 
 > We're using [Composer for autoloading][1] files in our `src/` directory
   with the following `composer.json`:
-  ```json
-  {
-      "autoload": {
-          "psr-0": {"DiDemo": "src/"}
-      }
-  }
-  ```
+  [[[ code('bcfc0e8ea4') ]]]
 
 Tail the log file:
 
