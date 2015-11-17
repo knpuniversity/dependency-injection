@@ -34,9 +34,12 @@ sending of emails for simplicity. Instead, it just logs details to a file:
 
 [[[ code('fe92cfe82b') ]]]
 
-> We're using [Composer for autoloading][1] files in our `src/` directory
-  with the following `composer.json`:
-  [[[ code('bcfc0e8ea4') ]]]
+***TIP
+We're using [Composer for autoloading][1] files in our `src/` directory
+with the following `composer.json`:
+
+[[[ code('bcfc0e8ea4') ]]]
+***
 
 Tail the log file:
 
