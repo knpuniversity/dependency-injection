@@ -20,12 +20,16 @@ Copy in all of our logic into this new method:
 
 [[[ code('413dbb5d08') ]]]
 
-> To learn more about PHP namespaces, check out our free [PHP Namespaces in 120 Seconds][2]
-  tutorial.
+***SEEALSO
+To learn more about PHP namespaces, check out our free [PHP Namespaces in 120 Seconds][2]
+tutorial
+***
 
-> The namespace follows the directory structure so the the class is automatically
-  autoloaded by Composer's autoloader. For more on how this all works,
-  see [Autoloading in PHP and the PSR-0 Standard][3].
+***TIP
+The namespace follows the directory structure so the the class is automatically
+autoloaded by Composer's autoloader. For more on how this all works,
+see [Autoloading in PHP and the PSR-0 Standard][3].
+***
 
 And just like that, you've created your first service! Roughly speaking,
 a service is any PHP class that performs an action. Since this sends emails
@@ -77,11 +81,7 @@ harder to test.
 
 ## Our Friend Dependency Injection
 
-Let's get rid of all of that and do this right:
-
-[[[ code('384627993d') ]]]
-
-[[[ code('7e81b3afca') ]]]
+Let's get rid of all of that and do this right.
 
 Since `FriendHarvester` needs the PDO object, add a `__construct()` method
 with it as the first argument. Set the value to a new private property and
@@ -93,11 +93,14 @@ The `FriendHarvester` now makes a lot of sense: whoever instantiates it
 *must* pass us a `$pdo` variable. Inside this class, we don't care *how*
 this will happen, we just know that it will, and we can make use of it.
 
-> You can also type-hint the argument, which is a great practice. We'll
-  talk more about this later:
-  ```php
-  public function __construct(\PDO $pdo)
-  ```
+***TIP
+You can also type-hint the argument, which is a great practice. We'll
+talk more about this later:
+
+```php
+public function __construct(\PDO $pdo)
+```
+***
 
 This very simple idea is called [Dependency Injection][4], and you just nailed
 it! Dependency injection means that if a class needs an object or some configuration,
