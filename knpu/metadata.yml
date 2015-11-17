@@ -21,8 +21,8 @@ chapters:
         is_free:    true
         video_key:  140212054
         challenges:
-            - Challenges\RefactorOutGlobalCoding
-
+            - Challenges\Services\RefactorOutGlobalCoding
+            - Challenges\Services\WhatsWrongWithGlobalMC
     injection-interfaces:
         is_free:    true
         video_key:  140212052
