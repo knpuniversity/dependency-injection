@@ -20,6 +20,9 @@ chapters:
     services:
         is_free:    true
         video_key:  140212054
+        challenges:
+            - Challenges\RefactorOutGlobalCoding
+
     injection-interfaces:
         is_free:    true
         video_key:  140212052
