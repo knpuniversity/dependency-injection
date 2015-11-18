@@ -1,4 +1,5 @@
 type: php
 #services: []
 #extensions: []
-composer: ~
+composer:
+    pimple/pimple: 1.0.*
