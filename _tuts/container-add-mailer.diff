@@ -1,0 +1,32 @@
+diff --git a/app.php b/app.php
+index 0ab7bfc..345e965 100644
+--- a/app.php
++++ b/app.php
+@@ -5,15 +5,19 @@ require __DIR__.'/vendor/autoload.php';
+ use DiDemo\Mailer\SmtpMailer;
+ use DiDemo\FriendHarvester;
+ 
++$container = new Pimple();
++
++$container['mailer'] = $container->share(function() {
++    return new SmtpMailer(
++        'smtp.SendMoneyToStrangers.com',
++        'smtpuser',
++        'smtppass',
++        '465'
++    );
++});
++
+ $dsn = 'sqlite:'.__DIR__.'/data/database.sqlite';
+ $pdo = new PDO($dsn);
+ 
+-$mailer = new SmtpMailer(
+-    'smtp.SendMoneyToStrangers.com',
+-    'smtpuser',
+-    'smtppass',
+-    '465'
+-);
+-
+-$friendHarvester = new FriendHarvester($pdo, $mailer);
++$friendHarvester = new FriendHarvester($pdo, $container['mailer']);
+ $friendHarvester->emailFriends();

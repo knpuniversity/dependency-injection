@@ -34,7 +34,37 @@
             "id": "di-injecting-pdo",
             "name": "DI: Injecting PDO",
             "description": null
+        },
+        {
+            "id": "di-inject-smtp-config",
+            "name": "DI: Inject smtp config",
+            "description": null
+        },
+        {
+            "id": "di-inject-entire-smtpmailer",
+            "name": "DI: Inject entire SmtpMailer",
+            "description": null
+        },
+        {
+            "id": "di-type-hint-args",
+            "name": "DI: Type-hint args",
+            "description": null
+        },
+        {
+            "id": "interface-add-mailerinterface-and-use",
+            "name": "Interface: Add MailerInterface and use",
+            "description": null
+        },
+        {
+            "id": "container-download-pimple",
+            "name": "Container: Download Pimple",
+            "description": null
+        },
+        {
+            "id": "container-add-mailer",
+            "name": "Container: Add mailer",
+            "description": null
         }
     ],
-    "sha": "5540256b5d8e6b126ab26c000ce4779622987136"
+    "sha": "0dd7db56de47d6884c4a2d6bd7b80be7b414cfba"
 }

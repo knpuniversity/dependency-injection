@@ -1,0 +1,50 @@
+diff --git a/src/DiDemo/FriendHarvester.php b/src/DiDemo/FriendHarvester.php
+index f5b43cc..7525846 100644
+--- a/src/DiDemo/FriendHarvester.php
++++ b/src/DiDemo/FriendHarvester.php
+@@ -2,7 +2,7 @@
+ 
+ namespace DiDemo;
+ 
+-use DiDemo\Mailer\SmtpMailer;
++use DiDemo\Mailer\MailerInterface;
+ 
+ class FriendHarvester
+ {
+@@ -10,7 +10,7 @@ class FriendHarvester
+ 
+     private $mailer;
+ 
+-    public function __construct(\PDO $pdo, SmtpMailer $mailer)
++    public function __construct(\PDO $pdo, MailerInterface $mailer)
+     {
+         $this->pdo = $pdo;
+         $this->mailer = $mailer;
+diff --git a/src/DiDemo/Mailer/MailerInterface.php b/src/DiDemo/Mailer/MailerInterface.php
+new file mode 100644
+index 0000000..cfaf0ec
+--- /dev/null
++++ b/src/DiDemo/Mailer/MailerInterface.php
+@@ -0,0 +1,8 @@
++<?php
++
++namespace DiDemo\Mailer;
++
++interface MailerInterface
++{
++    public function sendMessage($recipientEmail, $subject, $message, $from);
++}
+\ No newline at end of file
+diff --git a/src/DiDemo/Mailer/SmtpMailer.php b/src/DiDemo/Mailer/SmtpMailer.php
+index 7d0ee4d..ae087e2 100644
+--- a/src/DiDemo/Mailer/SmtpMailer.php
++++ b/src/DiDemo/Mailer/SmtpMailer.php
+@@ -5,7 +5,7 @@ namespace DiDemo\Mailer;
+ /**
+  * Sends emails via SMTP
+  */
+-class SmtpMailer
++class SmtpMailer implements MailerInterface
+ {
+     private $hostname;
+ 

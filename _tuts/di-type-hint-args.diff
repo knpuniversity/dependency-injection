@@ -1,0 +1,13 @@
+diff --git a/src/DiDemo/FriendHarvester.php b/src/DiDemo/FriendHarvester.php
+index 9b006fd..f5b43cc 100644
+--- a/src/DiDemo/FriendHarvester.php
++++ b/src/DiDemo/FriendHarvester.php
+@@ -10,7 +10,7 @@ class FriendHarvester
+ 
+     private $mailer;
+ 
+-    public function __construct($pdo, $mailer)
++    public function __construct(\PDO $pdo, SmtpMailer $mailer)
+     {
+         $this->pdo = $pdo;
+         $this->mailer = $mailer;

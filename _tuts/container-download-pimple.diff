@@ -1,0 +1,82 @@
+diff --git a/composer.json b/composer.json
+index ff1f5f1..8696f3e 100644
+--- a/composer.json
++++ b/composer.json
+@@ -2,7 +2,8 @@
+     "name": "knpuniversity/dependency-injection",
+     "description": "Tutorial for Dependency Injection and the art of services and containers",
+     "require": {
+-        "knpuniversity/gladiator": "^0.2.7"
++        "knpuniversity/gladiator": "^0.2.7",
++        "pimple/pimple": "1.0.*"
+     },
+     "autoload": {
+         "psr-4": { "": "src/" }
+diff --git a/composer.lock b/composer.lock
+index f179b46..ceb597d 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,8 +4,8 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "This file is @generated automatically"
+     ],
+-    "hash": "07062ce2b1ffd4b8144da07554ff7068",
+-    "content-hash": "72db28f49b4d5b7ff626eaaa3205d03b",
++    "hash": "420a20c9c790533210ac56abf09c1746",
++    "content-hash": "85d8aa95190051365bd31cfd7e5337df",
+     "packages": [
+         {
+             "name": "knpuniversity/gladiator",
+@@ -39,6 +39,52 @@
+             ],
+             "description": "Classes to support KnpUniversity challenges",
+             "time": "2015-10-21 19:29:31"
++        },
++        {
++            "name": "pimple/pimple",
++            "version": "v1.0.2",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/silexphp/Pimple.git",
++                "reference": "ae11e57e8c2bb414b2ff93396dbbfc0eb92feb94"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/ae11e57e8c2bb414b2ff93396dbbfc0eb92feb94",
++                "reference": "ae11e57e8c2bb414b2ff93396dbbfc0eb92feb94",
++                "shasum": ""
++            },
++            "require": {
++                "php": ">=5.3.0"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.0.x-dev"
++                }
++            },
++            "autoload": {
++                "psr-0": {
++                    "Pimple": "lib/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Fabien Potencier",
++                    "email": "fabien@symfony.com"
++                }
++            ],
++            "description": "Pimple is a simple Dependency Injection Container for PHP 5.3",
++            "homepage": "http://pimple.sensiolabs.org",
++            "keywords": [
++                "container",
++                "dependency injection"
++            ],
++            "time": "2013-03-08 08:21:40"
+         }
+     ],
+     "packages-dev": [],
