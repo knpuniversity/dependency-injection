@@ -1,0 +1,27 @@
+diff --git a/app.php b/app.php
+index c14e8da..69d4057 100644
+--- a/app.php
++++ b/app.php
+@@ -18,14 +18,17 @@ $container['mailer'] = $container->share(function() {
+     );
+ });
+ 
+-$container['friend_harvester'] = $container->share(function() {
+-    return new FriendHarvester($pdo, $container['mailer']);
++$container['friend_harvester'] = $container->share(function(Pimple $container) {
++    return new FriendHarvester($container['pdo'], $container['mailer']);
+ });
+ 
+-$dsn = 'sqlite:'.__DIR__.'/data/database.sqlite';
+-$pdo = new PDO($dsn);
++$container['pdo'] = $container->share(function() {
++    $dsn = 'sqlite:'.__DIR__.'/data/database.sqlite';
++
++    return new PDO($dsn);
++});
+ 
+ /* END CONTAINER BUILDING */
+ 
+-$friendHarvester = new FriendHarvester($pdo, $container['mailer']);
++$friendHarvester = $container['friend_harvester'];
+ $friendHarvester->emailFriends();

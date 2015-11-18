@@ -1,0 +1,26 @@
+diff --git a/app.php b/app.php
+index 69d4057..f6d32a2 100644
+--- a/app.php
++++ b/app.php
+@@ -9,6 +9,8 @@ use DiDemo\FriendHarvester;
+ 
+ $container = new Pimple();
+ 
++$container['database.dsn'] = 'sqlite:'.__DIR__.'/data/database.sqlite';
++
+ $container['mailer'] = $container->share(function() {
+     return new SmtpMailer(
+         'smtp.SendMoneyToStrangers.com',
+@@ -22,10 +24,8 @@ $container['friend_harvester'] = $container->share(function(Pimple $container) {
+     return new FriendHarvester($container['pdo'], $container['mailer']);
+ });
+ 
+-$container['pdo'] = $container->share(function() {
+-    $dsn = 'sqlite:'.__DIR__.'/data/database.sqlite';
+-
+-    return new PDO($dsn);
++$container['pdo'] = $container->share(function(Pimple $container) {
++    return new PDO($container['database.dsn']);
+ });
+ 
+ /* END CONTAINER BUILDING */

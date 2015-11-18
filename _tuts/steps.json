@@ -64,7 +64,37 @@
             "id": "container-add-mailer",
             "name": "Container: Add mailer",
             "description": null
+        },
+        {
+            "id": "container-add-comment-separation",
+            "name": "Container: Add comment separation",
+            "description": null
+        },
+        {
+            "id": "container-start-with-friend-harvester",
+            "name": "Container: Start with friend_harvester",
+            "description": null
+        },
+        {
+            "id": "container-finish-friend-harvester-pdo",
+            "name": "Container: Finish friend_harvester+PDO",
+            "description": null
+        },
+        {
+            "id": "container-add-dsn-param-to-container",
+            "name": "Container: Add dsn param to container",
+            "description": null
+        },
+        {
+            "id": "container-move-smtp-config",
+            "name": "Container: Move smtp config",
+            "description": null
+        },
+        {
+            "id": "organization-config-php-services-php",
+            "name": "Organization: config.php & services.php",
+            "description": null
         }
     ],
-    "sha": "0dd7db56de47d6884c4a2d6bd7b80be7b414cfba"
+    "sha": "6e7a900773f6cd1c5d3ba6b0344dedbc94d8ee87"
 }

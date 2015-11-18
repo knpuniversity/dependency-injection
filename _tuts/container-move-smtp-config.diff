@@ -1,0 +1,27 @@
+diff --git a/app.php b/app.php
+index f6d32a2..cf5c954 100644
+--- a/app.php
++++ b/app.php
+@@ -10,13 +10,17 @@ use DiDemo\FriendHarvester;
+ $container = new Pimple();
+ 
+ $container['database.dsn'] = 'sqlite:'.__DIR__.'/data/database.sqlite';
++$container['smtp.server'] = 'smtp.SendMoneyToStrangers.com';
++$container['smtp.user'] = 'smtpuser';
++$container['smtp.password'] = 'smtp';
++$container['smtp.port'] = 465;
+ 
+-$container['mailer'] = $container->share(function() {
++$container['mailer'] = $container->share(function(Pimple $container) {
+     return new SmtpMailer(
+-        'smtp.SendMoneyToStrangers.com',
+-        'smtpuser',
+-        'smtppass',
+-        '465'
++        $container['smtp.server'],
++        $container['smtp.user'],
++        $container['smtp.password'],
++        $container['smtp.port']
+     );
+ });
+ 
