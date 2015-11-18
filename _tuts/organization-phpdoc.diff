@@ -1,0 +1,20 @@
+diff --git a/app.php b/app.php
+index 0933880..5135e03 100644
+--- a/app.php
++++ b/app.php
+@@ -2,6 +2,8 @@
+ 
+ require __DIR__.'/vendor/autoload.php';
+ 
++use DiDemo\FriendHarvester;
++
+ /* START BUILDING CONTAINER */
+ 
+ $container = new Pimple();
+@@ -11,5 +13,6 @@ require __DIR__.'/app/services.php';
+ 
+ /* END CONTAINER BUILDING */
+ 
++/** @var FriendHarvester $friendHarvester */
+ $friendHarvester = $container['friend_harvester'];
+ $friendHarvester->emailFriends();

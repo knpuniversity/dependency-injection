@@ -94,7 +94,12 @@
             "id": "organization-config-php-services-php",
             "name": "Organization: config.php & services.php",
             "description": null
+        },
+        {
+            "id": "organization-phpdoc",
+            "name": "Organization: PhpDoc",
+            "description": null
         }
     ],
-    "sha": "6e7a900773f6cd1c5d3ba6b0344dedbc94d8ee87"
+    "sha": "dab29ca0f3710ecd6fb3453848754b395c734fc9"
 }
