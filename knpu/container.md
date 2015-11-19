@@ -11,21 +11,14 @@ container. A lot of DI containers exist in PHP, but let's use Composer to grab t
 simplest one of all, called [Pimple][1]. Add a `require` key to `composer.json` to
 include the library:
 
-```json
-    {
-        "autoload": {
-            "psr-0": {"DiDemo": "src/"}
-        },
-        "require": {
-            "pimple/pimple": "1.0.*"
-        }
-    }
-```
+[[[ code('002395a9a7') ]]]
 
 Make sure you've [downloaded Composer][2], and then run `php composer.phar install`
 to download Pimple.
 
-> If you're new to Composer, check out our free [The Wonderful World of Composer Tutorial][3].
+***SEEALSE
+If you're new to Composer, check out our free [The Wonderful World of Composer Tutorial][3].
+***
 
 Pimple is both powerful, and tiny. Kind of like having one on prom night. 
 It is just a single file taking up around 200 lines. That's one reason I love it!
@@ -33,55 +26,40 @@ It is just a single file taking up around 200 lines. That's one reason I love it
 Create a new Pimple container. This is an object of course, but it looks
 and acts like an array that we store all of our service objects on:
 
-```php
-    // app.php
-    // ...
-
-    $container = new Pimple();
-```
+[[[ code('d7531b4518') ]]]
 
 Start by adding the `SmtpMailer` object under a key called `mailer`. Instead
-of setting it directly, wrap it in a call to `share` and in an anonymous
+of setting it directly, wrap it in a call to `share()` and in an anonymous
 function. We'll talk more about this in a second, but just return the mailer
 object from the function for now:
 
-```php
-    // app.php
-    // ...
-
-    $container['mailer'] = $container->share(function() {
-        return new SmtpMailer(
-            'smtp.SendMoneyToStrangers.com',
-            'smtpuser',
-            'smtppass',
-            465
-        );
-    });
-```
+[[[ code('bc06a6f9b3') ]]]
 
 To access the `SmtpMailer` object, use the array syntax again:
 
-```php
-    // app.php
-    // ...
+[[[ code('a2f009ed4c') ]]]
 
-    $newsManager = new NewsletterManager($pdo, $container['mailer']);
-```
-
-It's that simple! Run the application to spam...I mean send great opportunities
+It's that simple! Run the application to spam... I mean send great opportunities
 to our friends!
+
+```bash
+php app.php
+```
 
 ## Shared and Lazy Services
 
 We haven't fully seen the awesomeness of the container yet, but there are
 already some cool things happening. First, wrapping the instantiation of
-the `mailer` service in an anonymous function makes its creation "lazy".
+the `mailer` service in an anonymous function makes its creation "lazy":
+
+[[[ code('1f1a463998') ]]]
+
 This means that the object isn't created until much later when we reference
 the `mailer` service and ask the container to give it to us. And if we
 never reference `mailer`, it's never created at all - saving us time and
 memory.
 
-Second, using the `share` method means that no matter how many times we
+Second, using the `share()` method means that no matter how many times we
 ask for the `mailer` service, it only creates it once. Each call returns 
 the original object:
 
@@ -95,7 +73,7 @@ the original object:
 
 This is a very common property of a service: you only ever need just one.
 If we need to send many emails, we don't need many mailers, we just need
-the one and then we'll call `send` on it many times. This also makes our code
+the one and then we'll call `send()` on it many times. This also makes our code
 faster and less memory intensive, since the container guarantees that we
 only have one mailer. This is another detail that we don't need to worry
 about.
@@ -104,65 +82,34 @@ about.
 
 Let's keep going and add our other services to the container. But first,
 I'll add some comments to separate which part of our code is building the
-container, and which part is our actual application code::
+container, and which part is our actual application code:
 
-```php
-    /* Start Container Building */
-    $container = new Pimple();
-    
-    // ...
-    
-    /* End Container Building */
-    
-    $friendHarvester = new FriendHarvester();
-    $friendHarvester->emailFriends();
-```
+[[[ code('f90c30ed46') ]]]
 
 Let's add `FriendHarvester` to the container next:
 
-```php
-    $container['friend_harvester'] = $container->share(function() {
-        return new FriendHarvester($pdo, $container['mailer']);
-    });
-```
+[[[ code('cbe1965d92') ]]]
 
 That's easy, except that we somehow need access to the `PDO` object and
 the container itself so we can get two required dependencies. Fortunately,
 the anonymous function is passed an argument, which is the Pimple container
 itself:
 
-```php
-    $container['friend_harvester'] = $container->share(function(Pimple $container) {
-        return new FriendHarvester($pdo, $container['mailer']);
-    });
-```
+[[[ code('a655050f3d') ]]]
 
 To fix the missing `PDO` object, just make it a service as well:
 
-```php
-    $container['pdo'] = $container->share(function() {
-        $dsn = 'sqlite:'.__DIR__.'/data/database.sqlite';
-
-        return new PDO($dsn);
-    });
-```
+[[[ code('7b7932edcf') ]]]
 
 Now we can easily update the `friend_harvester` service configuration to
 use it:
 
-```php
-    $container['friend_harvester'] = $container->share(function(Pimple $container) {
-        return new FriendHarvester($container['pdo'], $container['mailer']);
-    });
-```
+[[[ code('907375af7c') ]]]
 
 With the new `friend_harvester` service, update the application code to
 just grab it out of the container:
 
-```php
-    $friendHarvester = $container['friend_harvester'];
-    $friendHarvester->send();
-```
+[[[ code('a21c689103') ]]]
 
 Now that all three of our services are in the container, you can start to
 see the power that this gives us. All of the logic of exactly which objects
@@ -183,40 +130,19 @@ automatically, behind the scenes.
 
 But a container can hold more than just services, it can house our configuration
 as well. Create a new key on the container called `database.dsn`, set it to
-our configuration, and then use it when we're creating the PDO object::
+our configuration, and then use it when we're creating the PDO object:
 
-```php
-    $container['database_dsn'] = 'sqlite:'.__DIR__.'/data/database.sqlite';
+[[[ code('6d3167d1b3') ]]]
 
-    $container['pdo'] = $container->share(function(Pimple $container) {
-        return new PDO($container['database_dsn']);
-    });
-```
-
-We're not using the `share` method or the anonymous function because this
+We're not using the `share()` method or the anonymous function because this
 is just a scalar value, and we don't need to worry about that lazy-loading
 stuff.
 
 We can do the same thing with the SMTP configuration parameters. Notice that
 the name I'm giving to each of these parameters isn't important at all, I'm
-just inventing a sane pattern and using the name where I need it::
+just inventing a sane pattern and using the name where I need it:
 
-```php
-    $container['mailer.server'] = 'smtp.SendMoneyToStrangers.com';
-    $container['mailer.user'] = 'smtpuser';
-    $container['mailer.pass'] = 'smtppass';
-    $container['mailer.port'] = 465;
-    
-    // ...
-    $container['mailer'] = $container->share(function(Pimple $container) {
-         return new SmtpMailer(
-            $container['mailer.server'],
-            $container['mailer.user'],
-            $container['mailer.pass'],
-            $container['mailer.port']
-         );
-     });
-```
+[[[ code('73a5e2469d') ]]]
 
 When we're all done, the application works exactly as before. What we've
 gained is the ability to keep all our configuration together. This would
@@ -228,37 +154,17 @@ SMTP password.
 Now that we have this flexibility, let's move the configuration and service
 building into separate files altogether. Create a new `app/` directory and 
 `config.php` and `services.php` files. Require each of these from the `app.php` 
-script right after creating the container::
+script right after creating the container:
 
-```php
-    $container = new Pimple();
-    require __DIR__.'/app/config.php';
-    require __DIR__.'/app/services.php';
-```
+[[[ code('196678e491') ]]]
 
 Next, move the configuration logic into `config.php` and all the services into 
-`services.php`. Be sure to update the Sqlite database path in `config.php`
-since we just moved this file::
+`services.php`. Be sure to update the SQLite database path in `config.php`
+since we just moved this file:
 
-```php
-    // app/config.php
-    
-    $container['database_dsn'] = 'sqlite:'.__DIR__.'/../data/database.sqlite';
-    $container['mailer.server'] = 'smtp.SendMoneyToStrangers.com';
-    // ...
-```
+[[[ code('8368c9b994') ]]]
 
-```php
-    // app/services.php
-    use DiDemo\FriendHarvester;
-    use DiDemo\Mailer\SmtpMailer;
-
-    $container['pdo'] = $container->share(function(Pimple $container) {
-        return new PDO($container['database_dsn']);
-    });
-
-    // ...
-```
+[[[ code('a671bee050') ]]]
 
 ## Skinny Controllers and Service-Oriented Architecture
 
@@ -294,19 +200,16 @@ type of object something is.
 
 For example, after fetching the `friend_harvester` service, you can use
 a single-line comment to tell your IDE and other developers exactly what
-type of object we're getting back::
+type of object we're getting back:
 
-```php
-    /** @var \DiDemo\FriendHarvester $friendHarvester */
-    $friendHarvester = $container['friend_harvester'];
-```
+[[[ code('915c75cbb0') ]]]
 
 This gives us IDE auto-complete on the `$friendHarvester` variable. 
 Another common tactic is to create an object or sub-class the container
-and add specific methods that return different services and have proper PHP
-doc on them. I won't show it here, but imagine we've sub-classed
-the `Pimple` class and added a `getFriendHarvester` method which has
-a proper `@return` PHP doc on it.
+and add specific methods that return different services and have proper
+PHPDoc on them. I won't show it here, but imagine we've sub-classed
+the `Pimple` class and added a `getFriendHarvester()` method which has
+a proper `@return` PHPDoc on it.
 
 
 [1]: http://pimple.sensiolabs.org/
