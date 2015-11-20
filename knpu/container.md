@@ -16,7 +16,7 @@ include the library:
 Make sure you've [downloaded Composer][2], and then run `php composer.phar install`
 to download Pimple.
 
-***SEEALSE
+***SEEALSO
 If you're new to Composer, check out our free [The Wonderful World of Composer Tutorial][3].
 ***
 
@@ -64,11 +64,11 @@ ask for the `mailer` service, it only creates it once. Each call returns
 the original object:
 
 ```php
-    $mailer1 = $container['mailer'];
-    $mailer2 = $container['mailer'];
+$mailer1 = $container['mailer'];
+$mailer2 = $container['mailer'];
 
-    // there is only 1 mailer, the 2 variables hold the same one
-    $willBeTrue = $mailer1 === $mailer2;
+// there is only 1 mailer, the 2 variables hold the same one
+$willBeTrue = $mailer1 === $mailer2;
 ```
 
 This is a very common property of a service: you only ever need just one.
@@ -186,9 +186,7 @@ In the real world, you may not always have skinny controllers, but always
 keep this philosophy in your mind. The skinnier your controllers, the more
 readable, reusable, testable and maintainable that code will be. What's better,
 a 300 line long chunk of code or 5 lines that use a few well-named and small
-service objects 
-
-> Or an awesome email about collecting millions of dollars?!
+service objects?
 
 ## Auto-completion with a Container
 
