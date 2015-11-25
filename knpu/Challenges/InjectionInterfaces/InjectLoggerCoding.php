@@ -7,6 +7,7 @@ use KnpU\Gladiator\CodingChallenge\CodingContext;
 use KnpU\Gladiator\CodingChallenge\CodingExecutionResult;
 use KnpU\Gladiator\CodingChallenge\CorrectAnswer;
 use KnpU\Gladiator\CodingChallenge\Exception\GradingException;
+use KnpU\Gladiator\CodingChallenge\File;
 use KnpU\Gladiator\CodingChallengeInterface;
 use KnpU\Gladiator\Grading\HtmlOutputGradingTool;
 use KnpU\Gladiator\Grading\PhpGradingTool;
@@ -77,7 +78,7 @@ class EmailAddressLoader
     }
 }
 EOF
-            , true)
+            , File::MODE_READONLY_ENABLED)
             ->addFileContents('Logger.php', <<<EOF
 <?php
 
@@ -92,7 +93,7 @@ class Logger
     }
 }
 EOF
-            , true)
+            , File::MODE_READONLY_ENABLED)
             ->setEntryPointFilename('sendHappy.php')
         ;
 

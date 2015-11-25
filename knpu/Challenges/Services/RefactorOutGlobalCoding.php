@@ -6,7 +6,7 @@ use KnpU\Gladiator\CodingChallenge\ChallengeBuilder;
 use KnpU\Gladiator\CodingChallenge\CodingContext;
 use KnpU\Gladiator\CodingChallenge\CodingExecutionResult;
 use KnpU\Gladiator\CodingChallenge\CorrectAnswer;
-use KnpU\Gladiator\CodingChallenge\Exception\GradingException;
+use KnpU\Gladiator\CodingChallenge\File;
 use KnpU\Gladiator\CodingChallengeInterface;
 use KnpU\Gladiator\Grading\HtmlOutputGradingTool;
 use KnpU\Gladiator\Grading\PhpGradingTool;
@@ -23,13 +23,13 @@ Help out Bob by showing him how to correctly pass the
 `\$emailRepository` object via dependency injection so that
 the dreaded `global` isn't needed!
 EOF;
-
     }
 
     public function getChallengeBuilder()
     {
         $builder = new ChallengeBuilder();
-        $builder->addFileContents('sendHappy.php', <<<EOF
+        $builder
+            ->addFileContents('sendHappy.php', <<<EOF
 <?php
 
 \$emailLoader = new EmailAddressLoader();
@@ -39,9 +39,8 @@ EOF;
 
 \$happyMessageSender->sendHappiness();
 EOF
-        )
-        ->setEntryPointFilename('sendHappy.php')
-        ->addFileContents('HappyMessageSender.php', <<<EOF
+            )
+            ->addFileContents('HappyMessageSender.php', <<<EOF
 <?php
 
 class HappyMessageSender
@@ -58,7 +57,7 @@ class HappyMessageSender
     }
 }
 EOF
-        )
+            )
             ->addFileContents('EmailAddressLoader.php', <<<EOF
 <?php
 
@@ -75,7 +74,8 @@ class EmailAddressLoader
     }
 }
 EOF
-        , true)
+            , File::MODE_READONLY_ENABLED)
+            ->setEntryPointFilename('sendHappy.php')
         ;
 
         return $builder;
@@ -109,7 +109,8 @@ EOF
 
     public function configureCorrectAnswer(CorrectAnswer $correctAnswer)
     {
-        $correctAnswer->setFileContents('HappyMessageSender.php', <<<EOF
+        $correctAnswer
+            ->setFileContents('HappyMessageSender.php', <<<EOF
 <?php
 
 class HappyMessageSender
@@ -131,9 +132,8 @@ class HappyMessageSender
     }
 }
 EOF
-        );
-
-        $correctAnswer->setFileContents('sendHappy.php', <<<EOF
+            )
+            ->setFileContents('sendHappy.php', <<<EOF
 <?php
 
 \$emailLoader = new EmailAddressLoader();
@@ -141,7 +141,8 @@ EOF
 
 \$happyMessageSender->sendHappiness();
 EOF
-        );
+            )
+        ;
     }
 
 }
