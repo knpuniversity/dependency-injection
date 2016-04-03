@@ -13,6 +13,8 @@ summary: |
     actually be excited about doing it, this tutorial is for you!
 illustration: di.png
 
+challenge_repo: knpuniversity/dependency-injection-challenges
+
 chapters:
     intro:
         is_free:    true
