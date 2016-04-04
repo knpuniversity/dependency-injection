@@ -14,12 +14,12 @@ You fixed Bob's code to not use globals anymore.
 "But wait!" - he says - "What's so wrong with using
 globals? My code was a lot easier before!".
 EOF;
-
     }
 
     public function configureAnswers(AnswerBuilder $builder)
     {
-        $builder->addAnswer('Globals are deprecated and are eventually going to be removed from PHP.')
+        $builder
+            ->addAnswer('Globals are deprecated and are eventually going to be removed from PHP.')
             ->addAnswer('Globals make your code difficult to debug and read. When you have `global $emailLoader`, I wonder - who set this variable? And where? What type of object is this?', true)
             ->addAnswer('Globals are not as performant as using dependency injection.')
             ->addAnswer('The `$GLOBALS` variable is available when using a web server, but *not* when running command-line tasks. This makes your code very breakable if you want to use the same code to do batch processing jobs.')

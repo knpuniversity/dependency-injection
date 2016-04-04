@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "07062ce2b1ffd4b8144da07554ff7068",
+    "hash": "c70c7f7f5892601571b37c6d582befdb",
     "content-hash": "72db28f49b4d5b7ff626eaaa3205d03b",
     "packages": [
         {
             "name": "knpuniversity/gladiator",
-            "version": "0.2.7",
+            "version": "0.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/knpuniversity/Gladiator.git",
-                "reference": "6e77e6f4988d4b803600d138f991298bb94d294d"
+                "reference": "7c83190eb9b5b445b2c995f2b62f69599ca11edc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/knpuniversity/Gladiator/zipball/6e77e6f4988d4b803600d138f991298bb94d294d",
-                "reference": "6e77e6f4988d4b803600d138f991298bb94d294d",
+                "url": "https://api.github.com/repos/knpuniversity/Gladiator/zipball/7c83190eb9b5b445b2c995f2b62f69599ca11edc",
+                "reference": "7c83190eb9b5b445b2c995f2b62f69599ca11edc",
                 "shasum": ""
             },
             "type": "library",
@@ -38,7 +38,7 @@
                 }
             ],
             "description": "Classes to support KnpUniversity challenges",
-            "time": "2015-10-21 19:29:31"
+            "time": "2015-11-16 18:48:20"
         }
     ],
     "packages-dev": [],
