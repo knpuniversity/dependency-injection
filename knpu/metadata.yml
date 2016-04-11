@@ -28,9 +28,16 @@ chapters:
     injection-interfaces:
         is_free:    true
         video_key:  140212052
+        challenges:
+            - injectioninterfaces_injectloggercoding
+            - injectioninterfaces_injectlogpathtotheloggercoding
+            - injectioninterfaces_interfacetypehintcoding
     container:
         is_free:    true
         video_key:  140212064
+        challenges:
+            - container_moveservicecreationtocontainercoding
+            - container_servicecreationbycontainermc
     container-in-your-project:
         is_free:    true
         video_key:  140212053
