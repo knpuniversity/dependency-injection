@@ -1,37 +1,38 @@
+diff --git a/.current_move b/.current_move
+new file mode 100644
+index 0000000..b4a200d
+--- /dev/null
++++ b/.current_move
+@@ -0,0 +1 @@
++{"step":"organization-phpdoc","hasStash":false}
+\ No newline at end of file
 diff --git a/composer.json b/composer.json
-index ff1f5f1..8696f3e 100644
+index 6b7cfc9..90c6181 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -2,7 +2,8 @@
+@@ -2,6 +2,7 @@
      "name": "knpuniversity/dependency-injection",
      "description": "Tutorial for Dependency Injection and the art of services and containers",
      "require": {
--        "knpuniversity/gladiator": "^0.2.7"
-+        "knpuniversity/gladiator": "^0.2.7",
 +        "pimple/pimple": "1.0.*"
      },
      "autoload": {
          "psr-4": { "": "src/" }
 diff --git a/composer.lock b/composer.lock
-index f179b46..ceb597d 100644
---- a/composer.lock
+new file mode 100644
+index 0000000..74748c5
+--- /dev/null
 +++ b/composer.lock
-@@ -4,8 +4,8 @@
-         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
-         "This file is @generated automatically"
-     ],
--    "hash": "07062ce2b1ffd4b8144da07554ff7068",
--    "content-hash": "72db28f49b4d5b7ff626eaaa3205d03b",
-+    "hash": "420a20c9c790533210ac56abf09c1746",
-+    "content-hash": "85d8aa95190051365bd31cfd7e5337df",
-     "packages": [
-         {
-             "name": "knpuniversity/gladiator",
-@@ -39,6 +39,52 @@
-             ],
-             "description": "Classes to support KnpUniversity challenges",
-             "time": "2015-10-21 19:29:31"
-+        },
+@@ -0,0 +1,65 @@
++{
++    "_readme": [
++        "This file locks the dependencies of your project to a known state",
++        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
++        "This file is @generated automatically"
++    ],
++    "hash": "aa695dc0e06939d53101b452c22de48b",
++    "content-hash": "f09ae353c0f32028208cac46b004549c",
++    "packages": [
 +        {
 +            "name": "pimple/pimple",
 +            "version": "v1.0.2",
@@ -77,6 +78,14 @@ index f179b46..ceb597d 100644
 +                "dependency injection"
 +            ],
 +            "time": "2013-03-08 08:21:40"
-         }
-     ],
-     "packages-dev": [],
++        }
++    ],
++    "packages-dev": [],
++    "aliases": [],
++    "minimum-stability": "stable",
++    "stability-flags": [],
++    "prefer-stable": false,
++    "prefer-lowest": false,
++    "platform": [],
++    "platform-dev": []
++}
