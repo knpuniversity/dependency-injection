@@ -13,6 +13,10 @@ summary: |
     actually be excited about doing it, this tutorial is for you!
 illustration: di.png
 
+tuts_hero:
+    start_step: "start"
+    finish_step: "organization-phpdoc"
+
 challenge_repo: knpuniversity/dependency-injection-challenges
 
 chapters:
