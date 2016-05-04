@@ -2,23 +2,27 @@ Dependency Injection, Containers and Pimple
 ===========================================
 
 Well hi there! Enclosed is the code that accompanies our tutorial on dependency
-injection, DI contains, services and Pimple. Here's what to look for:
+injection, DI contains, services and Pimple.
 
-Starting Code
-=============
+Installation
+============
 
-This directory holds the starting state of the code at the beginning of the
-tutorial. To get things running:
+1) Download/install Composer into this directory. See http://getcomposer.org
 
-    chmod 777 -R data
-    php data/setupDb.php
-    mkdir logs
-    chmod 777 logs
+2) Download the vendor files by running:
 
-You can also run Composer, though the `vendor/` directory should already
-have everything it needs:
+```
+php composer.phar install
+```
 
-    php composer.phar install
+3) Make sure a few directories are writeable:
+
+```
+chmod 777 -R data
+php data/setupDb.php
+mkdir logs
+chmod 777 logs
+```
 
 Run the App
 -----------
