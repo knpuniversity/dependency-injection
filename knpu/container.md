@@ -72,8 +72,8 @@ $willBeTrue = $mailer1 === $mailer2;
 ```
 
 ***TIP
-The `share()` method is deprecated and removed since Pimple 2.x version -
-you just need to use bare anonymous functions instead of wrapping them
+The `share()` method is deprecated and removed since Pimple 2.0. Now, you
+simply need to use bare anonymous functions instead of wrapping them
 with `share()`:
 
 ```php
