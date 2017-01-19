@@ -71,6 +71,18 @@ $mailer2 = $container['mailer'];
 $willBeTrue = $mailer1 === $mailer2;
 ```
 
+***TIP
+The `share()` method is deprecated and removed since Pimple 2.0. Now, you
+simply need to use bare anonymous functions instead of wrapping them
+with `share()`:
+
+```php
+$container['session'] = function() {
+    return new Session();
+};
+```
+***
+
 This is a very common property of a service: you only ever need just one.
 If we need to send many emails, we don't need many mailers, we just need
 the one and then we'll call `send()` on it many times. This also makes our code
