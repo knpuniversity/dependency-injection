@@ -56,4 +56,4 @@ php app.php
 You'll see two emails are sent to two lucky people.
 
 
-[1]: knpuniversity.com/composer
+[1]: knpuniversity.com/screencast/composer
