@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 6b7cfc9..90c6181 100644
+index 94a1e15..51a29ea 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -2,6 +2,7 @@
@@ -12,18 +12,17 @@ index 6b7cfc9..90c6181 100644
          "psr-4": { "": "src/" }
 diff --git a/composer.lock b/composer.lock
 new file mode 100644
-index 0000000..74748c5
+index 0000000..2c84827
 --- /dev/null
 +++ b/composer.lock
-@@ -0,0 +1,65 @@
+@@ -0,0 +1,68 @@
 +{
 +    "_readme": [
 +        "This file locks the dependencies of your project to a known state",
-+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
++        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
 +        "This file is @generated automatically"
 +    ],
-+    "hash": "aa695dc0e06939d53101b452c22de48b",
-+    "content-hash": "f09ae353c0f32028208cac46b004549c",
++    "content-hash": "240b7a3ee788a0a485b9b51494deca58",
 +    "packages": [
 +        {
 +            "name": "pimple/pimple",
@@ -69,7 +68,7 @@ index 0000000..74748c5
 +                "container",
 +                "dependency injection"
 +            ],
-+            "time": "2013-03-08 08:21:40"
++            "time": "2013-03-08T08:21:40+00:00"
 +        }
 +    ],
 +    "packages-dev": [],
@@ -79,5 +78,9 @@ index 0000000..74748c5
 +    "prefer-stable": false,
 +    "prefer-lowest": false,
 +    "platform": [],
-+    "platform-dev": []
++    "platform-dev": [],
++    "platform-overrides": {
++        "php": "5.5.9"
++    },
++    "plugin-api-version": "1.1.0"
 +}
