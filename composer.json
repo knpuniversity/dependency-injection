@@ -5,5 +5,10 @@
     },
     "autoload": {
         "psr-4": { "": "src/" }
+    },
+    "config": {
+        "platform": {
+            "php": "5.5.9"
+        }
     }
 }
