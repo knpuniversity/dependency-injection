@@ -18,7 +18,7 @@ php composer.phar install
 3) Make sure a few directories are writeable:
 
 ```
-chmod 777 -R data
+chmod -R 777 data
 php data/setupDb.php
 mkdir logs
 chmod 777 logs
